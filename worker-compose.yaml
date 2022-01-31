@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+
+  alt_worker_1:
+    build:
+      context: .
+    container_name: alt_worker_1
+    command: celery -A tasks worker --concurrency=4 --loglevel=INFO -n worker-1@%h
+    environment:
+      DOCKER: 1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+    restart: unless-stopped
+
+  alt_worker_2:
+    build:
+      context: .
+    container_name: alt_worker_2
+    command: celery -A tasks worker --concurrency=4 --loglevel=INFO -n worker-2@%h
+    environment:
+      DOCKER: 1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+    restart: unless-stopped
+
+  alt_worker_3:
+    build:
+      context: .
+    container_name: alt_worker_3
+    command: celery -A tasks worker --concurrency=4 --loglevel=INFO -n worker-3@%h
+    environment:
+      DOCKER: 1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+    restart: unless-stopped
+
+  alt_worker_4:
+    build:
+      context: .
+    container_name: alt_worker_4
+    command: celery -A tasks worker --concurrency=4 --loglevel=INFO -n worker-4@%h
+    environment:
+      DOCKER: 1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+    restart: unless-stopped
