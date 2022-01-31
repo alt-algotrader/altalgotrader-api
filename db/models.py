@@ -1,4 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
+
+
+class User(AbstractUser):
+    username = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(_('email address'), unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+
+    def __str__(self):
+        return self.email
 
 
 class Symbol(models.Model):
@@ -120,6 +133,20 @@ class KlayswapPoolInfoHour(models.Model):
 
     def __str__(self):
         return self.id
+
+
+class KlayswapHourOHLCV(models.Model):
+    id = models.CharField(primary_key=True, max_length=30)
+    symbol = models.CharField(max_length=50, blank=True, null=True)
+    date = models.CharField(max_length=30, blank=True, null=True)
+    open_prc = models.FloatField(blank=True, null=True)
+    high_prc = models.FloatField(blank=True, null=True)
+    low_prc = models.FloatField(blank=True, null=True)
+    close_prc = models.FloatField(blank=True, null=True)
+    volume = models.FloatField(blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.symbol} {self.date} {self.close_prc}'
 
 
 class KlayswapDayVolume(models.Model):

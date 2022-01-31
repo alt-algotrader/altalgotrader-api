@@ -8,3 +8,5 @@ __pycache__/
 infrastructure/
 
 *.pyc
+
+db.sqlite3

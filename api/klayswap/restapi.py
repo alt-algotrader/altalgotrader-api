@@ -64,6 +64,7 @@ class KlayswapAPI:
         date = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
         for token in self._data['tokenInfo']:
             data = {
+                'address': token['address'],
                 'date': date,
                 'amount': token['amount'],
                 'volume': token['volume'],
@@ -99,6 +100,7 @@ class KlayswapAPI:
         date = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
         for pool in self._data['recentPoolInfo']:
             data = {
+                'exchange_address': pool['exchange_address'],
                 'date': date,
                 'amount_a': pool['amountA'],
                 'amount_b': pool['amountB'],
