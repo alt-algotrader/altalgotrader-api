@@ -3,6 +3,7 @@
 .DS_Store
 
 venv/
+examples/
 __pycache__/
 
 *.pyc
