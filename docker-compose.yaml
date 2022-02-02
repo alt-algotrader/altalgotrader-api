@@ -18,6 +18,18 @@ services:
       - default
     restart: unless-stopped
 
+  alt_klayswap_data_collector:
+    build:
+      context: .
+      dockerfile: ServerDockerfile
+    container_name: alt_klayswap_data_collector
+    command: python runner.py klayswap
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+    restart: unless-stopped
+
 #  fastapi_server:
 #    build:
 #      context: .

@@ -1,8 +1,7 @@
-import time
 import datetime
-import traceback
 import threading
-import pandas as pd
+
+from operations.klayswap_op import KlayswapOperator
 
 
 class DataCollector:
@@ -24,7 +23,7 @@ class DataCollector:
         time_now = datetime.datetime.now()
 
         if time_now.minute != self.update_time.minute:
-            op.save_current_pool_data()
+            op.minute_save_data()
             self.update_time = time_now
             print(time_now)
 
@@ -34,5 +33,5 @@ class DataCollector:
 
 
 if __name__ == '__main__':
-    dc = DataCollector('bybit')
+    dc = DataCollector('klayswap')
     dc.start()

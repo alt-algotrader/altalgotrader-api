@@ -19,6 +19,7 @@ class Symbol(models.Model):
     asset_type = models.CharField(max_length=20, blank=True, null=True)
     symbol = models.CharField(max_length=50, blank=True, null=True)
     symbol_id = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True, null=True)
     active = models.BooleanField(default=False, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -38,6 +39,7 @@ class KlayswapCommon(models.Model):
 
 
 class KlayswapToken(models.Model):
+    date = models.CharField(max_length=30, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
     symbol = models.CharField(max_length=50, blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
